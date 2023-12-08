@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragment_AllCards">
+    <fragment
+        android:id="@+id/fragment_AllCards"
+        android:name="com.example.flashcard_v3.Fragment_AllCards"
+        android:label="fragment__all_cards"
+        tools:layout="@layout/fragment__all_cards" >
+        <action
+            android:id="@+id/action_fragment_AllCards_to_fragment_DetailedCard"
+            app:destination="@id/fragment_DetailedCard" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_DetailedCard"
+        android:name="com.example.flashcard_v3.Fragment_DetailedCard"
+        android:label="Fragment_DetailedCard" >
+        <action
+            android:id="@+id/action_fragment_DetailedCard_to_fragment_AllCards"
+            app:destination="@id/fragment_AllCards" />
+    </fragment>
+</navigation>
