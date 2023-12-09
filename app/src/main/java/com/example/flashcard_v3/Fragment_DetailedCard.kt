@@ -40,13 +40,19 @@ class Fragment_DetailedCard : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CardListViewModel::class.java)
+        //viewModel = ViewModelProvider(this).get(CardListViewModel::class.java)
+        viewModel = ViewModelProvider(requireActivity()).get(CardListViewModel::class.java)
         viewModel.loadCards()
-        viewModel.setCurrentIndex(0)
+
+        Log.d("Fragment", "Current viewmodeldata is: ${viewModel.currentIndexLiveData.value!!}")
+        viewModel.setCurrentIndex(viewModel.currentIndexLiveData.value!!)
         viewModel.setCurrentCardIndex(0)
 
 
+
         viewModel.cardLiveData.observe(viewLifecycleOwner) { card ->
+            Log.d("Fragment", "Current id is: ${card.id}")
+
             val currentDescription = card.deckDescription[viewModel.currentIndexLiveData.value]
             descriptionTextView.text = currentDescription?.first ?: ""
         }

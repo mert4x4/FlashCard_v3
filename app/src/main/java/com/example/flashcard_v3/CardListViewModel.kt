@@ -11,6 +11,9 @@ class CardListViewModel : ViewModel() {
     private val _cardLiveData = MutableLiveData<Card>()
     val cardLiveData: LiveData<Card> = _cardLiveData
 
+    private val _cardLiveDataList = MutableLiveData<MutableList<Card>>()
+    val cardLiveDataList: LiveData<MutableList<Card>> = _cardLiveDataList
+
     private val _flippedLiveData = MutableLiveData<Boolean>()
     val flippedLiveData: LiveData<Boolean> = _flippedLiveData
 
@@ -37,7 +40,16 @@ class CardListViewModel : ViewModel() {
         val card = Card("Card Title", 1, deckDescriptionMap) // Example card
         cardsList.add(card)
 
+        val deckDescriptionMap1 = HashMap<Int, Pair<String, String>>()
+        deckDescriptionMap1[0] = "Aaaaaaa" to "bbbbbb"
+        deckDescriptionMap1[1] = "ccccc" to "dddddd"
+        deckDescriptionMap1[2] = "eeeee" to "ffffff"
+
+        val card1 = Card("Card Title 2", 2, deckDescriptionMap1) // Example card
+        cardsList.add(card1)
+
         _cardLiveData.value = card // Set the initial card
+        _cardLiveDataList.value = cardsList
     }
     fun setCurrentIndex(index: Int) {
         _currentIndexLiveData.value = index

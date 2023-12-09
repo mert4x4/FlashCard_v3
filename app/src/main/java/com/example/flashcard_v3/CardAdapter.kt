@@ -51,7 +51,7 @@ class CardAdapter(
     }
 
     fun updateData(cards: Card) {
-        dataset = listOf(cards)
+        dataset += listOf(cards)
         notifyDataSetChanged()
     }
 }

@@ -1,6 +1,7 @@
 package com.example.flashcard_v3
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,7 +31,7 @@ class Fragment_AllCards : Fragment(), CardAdapter.OnCardClickListener {
         recyclerView.adapter = cardAdapter
 
         // Obtain an instance of the CardListViewModel
-        val sharedViewModel = ViewModelProvider(requireActivity()).get(CardListViewModel::class.java)
+        sharedViewModel = ViewModelProvider(requireActivity()).get(CardListViewModel::class.java)
 
 
         sharedViewModel.loadCards()
@@ -44,9 +45,14 @@ class Fragment_AllCards : Fragment(), CardAdapter.OnCardClickListener {
 //            displayCards(cards)
 //        }
 
-        sharedViewModel.cardLiveData.observe(viewLifecycleOwner, { deck ->
+//        sharedViewModel.cardLiveData.observe(viewLifecycleOwner, { deck ->
+//            // Update the RecyclerView when data changes
+//            cardAdapter.updateData(deck)
+//        })
+        sharedViewModel.cardLiveDataList.observe(viewLifecycleOwner, { deck ->
             // Update the RecyclerView when data changes
-            cardAdapter.updateData(deck)
+            cardAdapter.updateData(deck[0])
+            cardAdapter.updateData(deck[1])
         })
 
 
@@ -85,9 +91,9 @@ class Fragment_AllCards : Fragment(), CardAdapter.OnCardClickListener {
 
     // Handle the click event in this method
     override fun onCardClick(card: Card) {
-
-
-        // Navigate to the detailed card fragment with the selected card as an argument
+        Log.d("Fragment", "Clicked card ID: ${card.id}")
+        sharedViewModel.setCurrentIndex(card.id - 1)
+        Log.d("Fragment", "Set current index to: ${card.id - 1}")
         view?.findNavController()?.navigate(R.id.action_fragment_AllCards_to_fragment_DetailedCard)
     }
 }

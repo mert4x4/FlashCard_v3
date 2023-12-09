@@ -11,7 +11,8 @@
         tools:layout="@layout/fragment__all_cards" >
         <action
             android:id="@+id/action_fragment_AllCards_to_fragment_DetailedCard"
-            app:destination="@id/fragment_DetailedCard" />
+            app:destination="@id/fragment_DetailedCard" >
+        </action>
     </fragment>
     <fragment
         android:id="@+id/fragment_DetailedCard"
