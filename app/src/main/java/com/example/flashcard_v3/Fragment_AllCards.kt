@@ -53,6 +53,7 @@ class Fragment_AllCards : Fragment(), CardAdapter.OnCardClickListener {
             // Update the RecyclerView when data changes
             cardAdapter.updateData(deck[0])
             cardAdapter.updateData(deck[1])
+            cardAdapter.updateData(deck[2])
         })
 
 

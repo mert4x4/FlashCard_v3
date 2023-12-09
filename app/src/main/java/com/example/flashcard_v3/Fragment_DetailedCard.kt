@@ -66,11 +66,12 @@ class Fragment_DetailedCard : Fragment() {
             if (viewModel.currentCardIndexLiveData.value!! >= 0 && viewModel.currentCardIndexLiveData.value!! < card.deckDescription.size) {
                 val description = if (flipped) {
                     card.deckDescription[viewModel.currentCardIndexLiveData.value!!]?.second
+
                 } else {
                     card.deckDescription[viewModel.currentCardIndexLiveData.value!!]?.first
                 }
 
-                descriptionTextView.text = description
+                descriptionTextView.text = description.toString()
             }
         }
 

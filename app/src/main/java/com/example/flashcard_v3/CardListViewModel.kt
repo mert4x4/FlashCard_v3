@@ -36,17 +36,48 @@ class CardListViewModel : ViewModel() {
         deckDescriptionMap[0] = "Who painted the Mona Lisa?" to "Leonardo da Vinci"
         deckDescriptionMap[1] = "What is the powerhouse of the cell?" to "Mitochondria"
         deckDescriptionMap[2] = "hello" to "merhaba"
+        deckDescriptionMap[3] = "What is the capital of France?" to "Paris"
+        deckDescriptionMap[4] = "Who wrote 'Romeo and Juliet'?" to "William Shakespeare"
+        deckDescriptionMap[5] = "What is the largest mammal on Earth?" to "Blue Whale"
+        deckDescriptionMap[6] = "In which year did the Titanic sink?" to "1912"
+        deckDescriptionMap[7] = "What is the currency of Japan?" to "Japanese Yen"
+        deckDescriptionMap[8] = "Who discovered penicillin?" to "Alexander Fleming"
+        deckDescriptionMap[9] = "What is the boiling point of water?" to "100 degrees Celsius"
 
-        val card = Card("Card Title", 1, deckDescriptionMap) // Example card
+        val card = Card("General Knowledge", 1, deckDescriptionMap) // Example card
         cardsList.add(card)
 
         val deckDescriptionMap1 = HashMap<Int, Pair<String, String>>()
-        deckDescriptionMap1[0] = "Aaaaaaa" to "bbbbbb"
-        deckDescriptionMap1[1] = "ccccc" to "dddddd"
-        deckDescriptionMap1[2] = "eeeee" to "ffffff"
+        deckDescriptionMap[0] = "What is the capital of Germany?" to "Berlin"
+        deckDescriptionMap[1] = "Who invented the telephone?" to "Alexander Graham Bell"
+        deckDescriptionMap[2] = "What is the tallest mountain in the world?" to "Mount Everest"
+        deckDescriptionMap[3] = "Who painted 'Starry Night'?" to "Vincent van Gogh"
+        deckDescriptionMap[4] = "What is the largest planet in our solar system?" to "Jupiter"
+        deckDescriptionMap[5] = "In which year did World War II end?" to "1945"
+        deckDescriptionMap[6] = "Who is known as the 'Father of Computer Science'?" to "Alan Turing"
+        deckDescriptionMap[7] = "What is the currency of Brazil?" to "Brazilian Real"
+        deckDescriptionMap[8] = "Which element has the chemical symbol 'H'?" to "Hydrogen"
+        deckDescriptionMap[9] = "Who wrote 'To Kill a Mockingbird'?" to "Harper Lee"
 
-        val card1 = Card("Card Title 2", 2, deckDescriptionMap1) // Example card
+        val card1 = Card("Trivia", 2, deckDescriptionMap) // Example card
         cardsList.add(card1)
+
+        val deckDescriptionMap2 = HashMap<Int, Pair<String, String>>()
+        deckDescriptionMap2[0] = "What is the chemical symbol for water?" to "H2O"
+        deckDescriptionMap2[1] = "Who developed the theory of relativity?" to "Albert Einstein"
+        deckDescriptionMap2[2] = "What is the powerhouse of the cell?" to "Mitochondria"
+        deckDescriptionMap2[3] = "Which planet is known as the Red Planet?" to "Mars"
+        deckDescriptionMap2[4] = "What is the largest organ in the human body?" to "Skin"
+        deckDescriptionMap2[5] = "What is the process by which plants make their own food?" to "Photosynthesis"
+        deckDescriptionMap2[6] = "Who discovered penicillin?" to "Alexander Fleming"
+        deckDescriptionMap2[7] = "What is the smallest prime number?" to "2"
+        deckDescriptionMap2[8] = "Which gas do plants absorb during photosynthesis?" to "Carbon dioxide"
+        deckDescriptionMap2[9] = "What is the chemical symbol for gold?" to "Au"
+
+        val card2 = Card("Science Trivia", 3, deckDescriptionMap2)
+        cardsList.add(card2)
+
+
 
         _cardLiveData.value = card // Set the initial card
         _cardLiveDataList.value = cardsList
