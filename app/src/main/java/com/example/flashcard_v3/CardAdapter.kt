@@ -1,17 +1,15 @@
 package com.example.flashcard_v3
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 
 
 
 class CardAdapter(
-    private val dataset: List<Card>,
+    private var dataset: List<Card>,
     private val clickListener: OnCardClickListener
 ) : RecyclerView.Adapter<CardAdapter.ItemViewHolder>() {
 
@@ -35,7 +33,7 @@ class CardAdapter(
 
         fun bind(card: Card) {
             nameView.text = card.name
-            profileDescView.text = card.id
+            profileDescView.text = card.id.toString()
         }
     }
 
@@ -50,5 +48,10 @@ class CardAdapter(
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val card = dataset[position]
         holder.bind(card)
+    }
+
+    fun updateData(cards: Card) {
+        dataset = listOf(cards)
+        notifyDataSetChanged()
     }
 }
