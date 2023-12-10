@@ -9,12 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 
 
 class CardAdapter(
-    private var dataset: List<Card>,
-    private val clickListener: OnCardClickListener
+    private var dataset: List<Deck>,
+    private val clickListener: OnDeckClickListener
 ) : RecyclerView.Adapter<CardAdapter.ItemViewHolder>() {
 
-    interface OnCardClickListener {
-        fun onCardClick(card: Card)
+    interface OnDeckClickListener {
+        fun onDeckClick(deck: Deck)
     }
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -25,15 +25,15 @@ class CardAdapter(
             itemView.setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
-                    val card = dataset[position]
-                    clickListener.onCardClick(card)
+                    val deck = dataset[position]
+                    clickListener.onDeckClick(deck)
                 }
             }
         }
 
-        fun bind(card: Card) {
-            nameView.text = card.name
-            profileDescView.text = card.id.toString()
+        fun bind(deck: Deck) {
+            nameView.text = deck.name
+            profileDescView.text = deck.id.toString()
         }
     }
 
@@ -46,12 +46,13 @@ class CardAdapter(
     override fun getItemCount(): Int = dataset.size
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        val card = dataset[position]
-        holder.bind(card)
+        val deck = dataset[position]
+        holder.bind(deck)
     }
 
-    fun updateData(cards: Card) {
-        dataset += listOf(cards)
+    fun updateData(decks: Deck) {
+        dataset += listOf(decks)
         notifyDataSetChanged()
     }
+
 }
