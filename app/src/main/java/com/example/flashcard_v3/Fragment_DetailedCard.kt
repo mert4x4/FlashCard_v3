@@ -20,6 +20,7 @@ class Fragment_DetailedCard : Fragment() {
     private lateinit var flipButton: Button
     private lateinit var viewModel: CardListViewModel
     private lateinit var nameTextView: TextView
+    private lateinit var indexTextView: TextView
 
     //    override fun onCreate(savedInstanceState: Bundle?) {
 //        super.onCreate(savedInstanceState)
@@ -35,6 +36,7 @@ class Fragment_DetailedCard : Fragment() {
         flipButton = view.findViewById(R.id.flipButton)
         descriptionTextView = view.findViewById(R.id.descriptionTextView)
         nameTextView = view.findViewById(R.id.nameTextView)
+        indexTextView = view.findViewById(R.id.textView_index)
 
         return view;
     }
@@ -48,6 +50,7 @@ class Fragment_DetailedCard : Fragment() {
         // Ensure that you have a valid index before setting the current index and card data
 
         viewModel.currentDeckIndex.observe(viewLifecycleOwner) { index ->
+            nameTextView.text = viewModel.currentDeckData.value?.get(viewModel.currentDeckIndex.value ?: -1)?.name ?: "deck name error"
 //            Log.v("current deck index",viewModel.currentDeckIndex.value.toString())
         }
 
@@ -55,12 +58,14 @@ class Fragment_DetailedCard : Fragment() {
             val currentDeckIndex = viewModel.currentDeckIndex.value ?: -1
             val currentCardIndex = viewModel.currentCardIndex.value ?: -1
 
+
+
             if (currentDeckIndex >= 0 && currentCardIndex >= 0) {
                 val deckList = viewModel.currentDeckData.value
 
                 if (deckList != null && currentDeckIndex < deckList.size) {
                     val currentDeck = deckList[currentDeckIndex]
-
+                    indexTextView.text = (currentCardIndex+1).toString() + "/"+ currentDeck.cards.size.toString()
                     val cardList = currentDeck.cards
 
                     if (currentCardIndex < cardList.size) {

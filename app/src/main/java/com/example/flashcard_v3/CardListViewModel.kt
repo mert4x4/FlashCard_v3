@@ -46,11 +46,20 @@ class CardListViewModel : ViewModel() {
         // Create a science deck with multiple cards
         val deck2 = Deck(id = 1, name = "Science Deck", cards = listOf(card4, card5, card6))
 
+        val card7 = Card(id = 0, question = "Red", answer = "Rot")
+        val card8 = Card(id = 1, question = "Blue", answer = "Blau")
+        val card9 = Card(id = 2, question = "Green", answer = "Grün")
+        val card10 = Card(id = 3, question = "Yellow", answer = "Gelb")
+        val card11 = Card(id = 4, question = "Purple", answer = "Lila")
+        val card12 = Card(id = 5, question = "Orange", answer = "Orange")
+
+        val deck3 = Deck(id = 2, name = "Colors Deck", cards = listOf(card7, card8, card9, card10, card11, card12))
+
         deckList.add(deck1)
         deckList.add(deck2)
+        deckList.add(deck3)
 
         _currentDeckData.value = deckList
-
     }
     fun setCurrentDeckIndex(index: Int) {
         _currentDeckIndexLiveData.value = index
@@ -65,19 +74,24 @@ class CardListViewModel : ViewModel() {
     }
 
     fun navigatePrevious() {
-        var prevData = currentCardIndex.value
-        if (prevData!! > 0) {
-            setCurrentCardIndex(prevData - 1)
+        val currentDeckIndex = currentDeckIndex.value ?: -1
+        val currentCardIndex = currentCardIndex.value ?: -1
+
+        if (currentDeckIndex >= 0 && currentCardIndex > 0) {
+            setCurrentCardIndex(currentCardIndex - 1)
         }
         setCurrentFliped(false)
     }
 
     fun navigateNext() {
-        var prevData = currentCardIndex.value
-        if (prevData!! < deckList.size - 1) {
-            setCurrentCardIndex(prevData + 1)
+        val currentDeckIndex = currentDeckIndex.value ?: -1
+        val currentCardIndex = currentCardIndex.value ?: -1
+
+        if (currentDeckIndex >= 0 && currentCardIndex < deckList[currentDeckIndex].cards.size - 1) {
+            setCurrentCardIndex(currentCardIndex + 1)
         }
         setCurrentFliped(false)
     }
+
 
 }
