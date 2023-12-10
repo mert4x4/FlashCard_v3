@@ -61,8 +61,6 @@ class Fragment_DetailedCard : Fragment() {
             val currentDeckIndex = viewModel.currentDeckIndex.value ?: -1
             val currentCardIndex = viewModel.currentCardIndex.value ?: -1
 
-
-
             if (currentDeckIndex >= 0 && currentCardIndex >= 0) {
                 val deckList = viewModel.currentDeckData.value
 
