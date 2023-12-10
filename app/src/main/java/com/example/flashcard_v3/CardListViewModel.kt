@@ -77,8 +77,9 @@ class CardListViewModel : ViewModel() {
 
         if (currentDeckIndex >= 0 && currentCardIndex > 0) {
             setCurrentCardIndex(currentCardIndex - 1)
+            setCurrentFliped(false)
         }
-        setCurrentFliped(false)
+
     }
 
     fun navigateNext() {
@@ -87,8 +88,8 @@ class CardListViewModel : ViewModel() {
 
         if (currentDeckIndex >= 0 && currentCardIndex < deckList[currentDeckIndex].cards.size - 1) {
             setCurrentCardIndex(currentCardIndex + 1)
+            setCurrentFliped(false)
         }
-        setCurrentFliped(false)
     }
 
 

@@ -69,6 +69,8 @@ class Fragment_DetailedCard : Fragment() {
                     }
                 }
             }
+            val color = Color.rgb(255, 192, 217)
+            descriptionTextView.setBackgroundColor(color)
             viewModel.setCurrentFliped(false)
             Log.v("current card index",viewModel.currentCardIndex.value.toString())
 
@@ -76,14 +78,10 @@ class Fragment_DetailedCard : Fragment() {
 
         prevButton.setOnClickListener {
             viewModel.navigatePrevious()
-            val color = Color.rgb(255, 192, 217)
-            descriptionTextView.setBackgroundColor(color)
         }
 
         nextButton.setOnClickListener {
             viewModel.navigateNext()
-            val color = Color.rgb(255, 192, 217)
-            descriptionTextView.setBackgroundColor(color)
         }
 
         descriptionTextView.setOnClickListener{
