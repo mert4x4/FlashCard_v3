@@ -28,14 +28,10 @@ class Fragment_AllCards : Fragment(), CardAdapter.OnDeckClickListener {
 
         sharedViewModel = ViewModelProvider(requireActivity()).get(CardListViewModel::class.java)
 
-        // Initialize the CardAdapter without any data initially
         cardAdapter = CardAdapter(emptyList(), this)
         recyclerView.adapter = cardAdapter
 
-        // Obtain an instance of the CardListViewModel
-
         sharedViewModel.currentDeckData.observe(viewLifecycleOwner, { deck ->
-            // Update the RecyclerView when data changes
             for(i in deck) cardAdapter.updateData(i)
 
         })

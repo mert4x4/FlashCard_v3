@@ -36,14 +36,12 @@ class CardListViewModel : ViewModel() {
         val card2 = Card(id = 1, question = "What is the largest mammal on Earth?", answer = "Blue Whale")
         val card3 = Card(id = 2, question = "Who painted the Mona Lisa?", answer = "Leonardo da Vinci")
 
-        // Create a deck with multiple cards
         val deck1 = Deck(id = 0, name = "Trivia Deck", cards = listOf(card1, card2, card3))
 
         val card4 = Card(id = 0, question = "What is the chemical symbol for water?", answer = "H2O")
         val card5 = Card(id = 1, question = "Who developed the theory of relativity?", answer = "Albert Einstein")
         val card6 = Card(id = 2, question = "What is the powerhouse of the cell?", answer = "Mitochondria")
 
-        // Create a science deck with multiple cards
         val deck2 = Deck(id = 1, name = "Science Deck", cards = listOf(card4, card5, card6))
 
         val card7 = Card(id = 0, question = "Red", answer = "Rot")

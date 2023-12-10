@@ -44,8 +44,6 @@ class Fragment_DetailedCard : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(requireActivity()).get(CardListViewModel::class.java)
 
-        // Ensure that you have a valid index before setting the current index and card data
-
         viewModel.currentDeckIndex.observe(viewLifecycleOwner) { index ->
             nameTextView.text = viewModel.currentDeckData.value?.get(viewModel.currentDeckIndex.value ?: -1)?.name ?: "deck name error"
             val color = Color.rgb(255, 192, 217)

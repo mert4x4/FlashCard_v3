@@ -33,7 +33,7 @@ class CardAdapter(
 
         fun bind(deck: Deck) {
             nameView.text = deck.name
-            profileDescView.text = deck.id.toString()
+            profileDescView.text = "Deck Amount: " + deck.cards.size.toString()
         }
     }
 
