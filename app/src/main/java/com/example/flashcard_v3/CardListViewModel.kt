@@ -60,6 +60,7 @@ class CardListViewModel : ViewModel() {
         deckList.add(deck3)
 
         _currentDeckData.value = deckList
+
     }
     fun setCurrentDeckIndex(index: Int) {
         _currentDeckIndexLiveData.value = index

@@ -1,5 +1,6 @@
 package com.example.flashcard_v3
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -51,7 +52,9 @@ class Fragment_DetailedCard : Fragment() {
 
         viewModel.currentDeckIndex.observe(viewLifecycleOwner) { index ->
             nameTextView.text = viewModel.currentDeckData.value?.get(viewModel.currentDeckIndex.value ?: -1)?.name ?: "deck name error"
-//            Log.v("current deck index",viewModel.currentDeckIndex.value.toString())
+            val color = Color.rgb(255, 192, 217)
+            descriptionTextView.setBackgroundColor(color);
+        //            Log.v("current deck index",viewModel.currentDeckIndex.value.toString())
         }
 
         viewModel.currentCardIndex.observe(viewLifecycleOwner) { index ->
@@ -81,10 +84,14 @@ class Fragment_DetailedCard : Fragment() {
 
         prevButton.setOnClickListener {
             viewModel.navigatePrevious()
+            val color = Color.rgb(255, 192, 217)
+            descriptionTextView.setBackgroundColor(color);
         }
 
         nextButton.setOnClickListener {
             viewModel.navigateNext()
+            val color = Color.rgb(255, 192, 217)
+            descriptionTextView.setBackgroundColor(color);
         }
 
         flipButton.setOnClickListener{
@@ -109,6 +116,9 @@ class Fragment_DetailedCard : Fragment() {
 
                 Log.v("current card index",viewModel.currentCardIndex.value.toString())
                 viewModel.setCurrentFliped(true)
+
+                val color = Color.rgb(138, 205, 215)
+                descriptionTextView.setBackgroundColor(color);
             }
             else{
                 val currentDeckIndex = viewModel.currentDeckIndex.value ?: -1
@@ -131,6 +141,9 @@ class Fragment_DetailedCard : Fragment() {
 
                 Log.v("current card index",viewModel.currentCardIndex.value.toString())
                 viewModel.setCurrentFliped(false)
+
+                val color = Color.rgb(255, 192, 217)
+                descriptionTextView.setBackgroundColor(color);
             }
         }
     }
