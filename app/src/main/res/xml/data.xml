@@ -1,0 +1,12 @@
+<flashcards>
+    <deck id="0" name="Trivia Deck">
+        <card id="0" question="What is the capital of Japan?" answer="Tokyo" />
+        <card id="1" question="What is the largest mammal on Earth?" answer="Blue Whale" />
+        <card id="2" question="Who painted the Mona Lisa?" answer="Leonardo da Vinci" />
+    </deck>
+    <deck id="1" name="Science Deck">
+        <card id="0" question="What is the chemical symbol for water?" answer="H2O" />
+        <card id="1" question="Who developed the theory of relativity?" answer="Albert Einstein" />
+        <card id="2" question="What is the powerhouse of the cell?" answer="Mitochondria" />
+    </deck>
+</flashcards>
