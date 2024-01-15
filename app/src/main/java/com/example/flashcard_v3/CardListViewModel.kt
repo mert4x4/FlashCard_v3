@@ -1,12 +1,16 @@
 package com.example.flashcard_v3
 
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.flashcard_v3.models.Card
+import com.example.flashcard_v3.models.Deck
+import org.xmlpull.v1.XmlPullParser
 
 
-class CardListViewModel : ViewModel() {
+class CardListViewModel : ViewModel(), CardAdapter.OnDeckClickListener {
 
     private val _currentDeckData = MutableLiveData<MutableList<Deck>>()
     val currentDeckData: LiveData<MutableList<Deck>> = _currentDeckData
@@ -24,6 +28,15 @@ class CardListViewModel : ViewModel() {
 
     private val _currentFlippedData = MutableLiveData<Boolean>()
     val currentFliped = _currentFlippedData
+
+
+    private val _cardAdapter = MutableLiveData<CardAdapter>()
+    val cardAdapter: LiveData<CardAdapter> = _cardAdapter
+
+    init {
+        _cardAdapter.value = CardAdapter(this)
+    }
+
 
     fun loadCards() {
         deckList = mutableListOf()
@@ -58,6 +71,8 @@ class CardListViewModel : ViewModel() {
 
         _currentDeckData.value = deckList
 
+        _cardAdapter.value = CardAdapter(this)
+
     }
     fun setCurrentDeckIndex(index: Int) {
         _currentDeckIndexLiveData.value = index
@@ -90,6 +105,11 @@ class CardListViewModel : ViewModel() {
             setCurrentCardIndex(currentCardIndex + 1)
             setCurrentFliped(false)
         }
+    }
+
+    override fun onDeckClick(deck: Deck) {
+        // Handle the click event as needed
+        Log.d("ViewModel", "Clicked on deck: ${deck.name}")
     }
 
 

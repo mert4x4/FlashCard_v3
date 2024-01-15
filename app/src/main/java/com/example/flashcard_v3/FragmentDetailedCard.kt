@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 
 //const val ARG_CARD = "arg_card"
 
-class Fragment_DetailedCard : Fragment() {
+class FragmentDetailedCard : Fragment() {
     private lateinit var descriptionTextView: TextView
     private lateinit var prevButton: Button
     private lateinit var nextButton: Button
@@ -21,15 +21,11 @@ class Fragment_DetailedCard : Fragment() {
     private lateinit var nameTextView: TextView
     private lateinit var indexTextView: TextView
 
-    //    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//
-//    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment__detailed_card, container, false)
+        val view = inflater.inflate(R.layout.fragment_detailed_card, container, false)
         prevButton = view.findViewById(R.id.prevButton)
         nextButton = view.findViewById(R.id.nextButton)
         descriptionTextView = view.findViewById(R.id.descriptionTextView)

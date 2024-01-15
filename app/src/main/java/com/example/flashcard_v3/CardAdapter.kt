@@ -1,59 +1,53 @@
 package com.example.flashcard_v3
 
-import android.graphics.Color
+import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.flashcard_v3.models.Deck
+import com.example.flashcard_v3.databinding.AllCardsItemBinding
+import com.example.flashcard_v3.models.Card
+import org.xmlpull.v1.XmlPullParser
 
 
+class CardAdapter(private val clickListener: OnDeckClickListener) :
+    ListAdapter<Deck, CardAdapter.ItemViewHolder>(Deck.DIFF_CALLBACK) {
 
-class CardAdapter(
-    private var dataset: List<Deck>,
-    private val clickListener: OnDeckClickListener
-) : RecyclerView.Adapter<CardAdapter.ItemViewHolder>() {
 
     interface OnDeckClickListener {
         fun onDeckClick(deck: Deck)
     }
 
-    inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val nameView: TextView = itemView.findViewById(R.id.textView1)
-        private val profileDescView: TextView = itemView.findViewById(R.id.textView2)
+    inner class ItemViewHolder(private val binding: AllCardsItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         init {
-            itemView.setOnClickListener {
+            binding.root.setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
-                    val deck = dataset[position]
+                    val deck = getItem(position)
                     clickListener.onDeckClick(deck)
                 }
             }
         }
 
-        fun bind(deck: Deck) {
-            nameView.text = deck.name
-            profileDescView.text = "Deck Amount: " + deck.cards.size.toString()
+        fun bind(deck: Deck?) {
+            deck?.let {
+                binding.deck = it
+                binding.executePendingBindings()
+            }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val itemView = inflater.inflate(R.layout.all_cards_item, parent, false)
-        return ItemViewHolder(itemView)
+        val binding = AllCardsItemBinding.inflate(inflater, parent, false)
+        return ItemViewHolder(binding)
     }
-
-    override fun getItemCount(): Int = dataset.size
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        val deck = dataset[position]
+        val deck = getItem(position)
         holder.bind(deck)
     }
-
-    fun updateData(decks: Deck) {
-        dataset += listOf(decks)
-        notifyDataSetChanged()
-    }
-
 }

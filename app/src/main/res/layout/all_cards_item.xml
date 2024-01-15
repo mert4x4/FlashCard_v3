@@ -1,50 +1,61 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#FFFFFF"
-    android:orientation="horizontal"
-    android:padding="16dp">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.cardview.widget.CardView
+    <data>
+        <variable
+            name="deck"
+            type="com.example.flashcard_v3.models.Deck" />
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="8dp"
-        android:padding="16dp"
-        android:radius="16dp"
-        app:cardCornerRadius="20dp">
+        android:background="#FFFFFF"
+        android:orientation="horizontal"
+        android:padding="16dp">
 
-        <LinearLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#00BCD4"
-            android:orientation="horizontal"
-            android:padding="8dp">
+            android:elevation="8dp"
+            android:padding="16dp"
+            android:radius="16dp"
+            app:cardCornerRadius="20dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="vertical"
-                android:paddingStart="16dp">
+                android:background="#00BCD4"
+                android:orientation="horizontal"
+                android:padding="8dp">
 
-                <TextView
-                    android:id="@+id/textView1"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="asdgasdgas"
-                    android:textSize="32sp"
-                    android:textStyle="bold" />
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:paddingStart="16dp">
 
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="dasdasasd"
-                    android:textSize="28sp" />
+                    <!-- Use data binding expressions to bind data -->
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{deck.name}"
+                        android:textSize="32sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{`Deck Amount: ` + deck.cards.size}"
+                        android:textSize="28sp" />
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-</LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</layout>
+
+
