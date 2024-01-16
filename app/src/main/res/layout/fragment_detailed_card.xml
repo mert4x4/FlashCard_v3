@@ -16,8 +16,9 @@
             android:layout_marginTop="28dp"
             android:text="Deck Name"
             android:textAlignment="center"
-            android:textSize="15pt"
+            android:textSize="20sp"
             android:textStyle="bold"
+            style="@style/TextAppearance.MaterialComponents.Headline6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,10 +27,11 @@
             android:layout_width="353dp"
             android:layout_height="440dp"
             android:layout_marginTop="45dp"
-            android:background="@color/material_dynamic_secondary95"
+            android:background="@color/primary_variant"
             android:gravity="center"
-            android:textSize="27sp"
+            android:textSize="18sp"
             android:textStyle="bold|italic"
+            style="@style/TextAppearance.MaterialComponents.Body1"
             app:layout_constraintDimensionRatio="H,358:454"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,13 +43,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:textAlignment="center"
-            android:textSize="30sp"
+            android:textSize="24sp"
             android:textStyle="bold"
+            style="@style/TextAppearance.MaterialComponents.Headline5"
             app:layout_constraintTop_toBottomOf="@+id/descriptionTextView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/prevButton"
             android:layout_width="147dp"
             android:layout_height="54dp"
@@ -59,7 +62,7 @@
             app:layout_constraintTop_toBottomOf="@+id/priceTextView"
             app:layout_constraintWidth_percent="0.5" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/nextButton"
             android:layout_width="147dp"
             android:layout_height="54dp"
@@ -78,10 +81,12 @@
             android:layout_marginTop="28dp"
             android:layout_marginEnd="36dp"
             android:text="0/0"
-            android:textSize="15pt"
+            android:textSize="15sp"
             android:textStyle="bold"
+            style="@style/TextAppearance.MaterialComponents.Caption"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

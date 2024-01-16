@@ -1,6 +1,5 @@
 package com.example.flashcard_v3
 
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -42,8 +41,6 @@ class FragmentDetailedCard : Fragment() {
 
         viewModel.currentDeckIndex.observe(viewLifecycleOwner) { index ->
             nameTextView.text = viewModel.currentDeckData.value?.get(viewModel.currentDeckIndex.value ?: -1)?.name ?: "deck name error"
-            val color = Color.rgb(255, 192, 217)
-            descriptionTextView.setBackgroundColor(color)
         //            Log.v("current deck index",viewModel.currentDeckIndex.value.toString())
         }
 
@@ -65,8 +62,6 @@ class FragmentDetailedCard : Fragment() {
                     }
                 }
             }
-            val color = Color.rgb(255, 192, 217)
-            descriptionTextView.setBackgroundColor(color)
             viewModel.setCurrentFliped(false)
             Log.v("current card index",viewModel.currentCardIndex.value.toString())
 
@@ -102,9 +97,6 @@ class FragmentDetailedCard : Fragment() {
 
                 Log.v("current card index",viewModel.currentCardIndex.value.toString())
                 viewModel.setCurrentFliped(true)
-
-                val color = Color.rgb(138, 205, 215)
-                descriptionTextView.setBackgroundColor(color)
             }
             else{
                 val currentDeckIndex = viewModel.currentDeckIndex.value ?: -1
@@ -127,9 +119,6 @@ class FragmentDetailedCard : Fragment() {
 
                 Log.v("current card index",viewModel.currentCardIndex.value.toString())
                 viewModel.setCurrentFliped(false)
-
-                val color = Color.rgb(255, 192, 217)
-                descriptionTextView.setBackgroundColor(color)
             }
         }
 

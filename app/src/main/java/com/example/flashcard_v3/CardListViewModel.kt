@@ -1,7 +1,10 @@
 package com.example.flashcard_v3
 
 import android.content.Context
+import android.graphics.Color
 import android.util.Log
+import android.widget.TextView
+import androidx.databinding.BindingAdapter
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -36,7 +39,6 @@ class CardListViewModel : ViewModel(), CardAdapter.OnDeckClickListener {
     init {
         _cardAdapter.value = CardAdapter(this)
     }
-
 
     fun loadCards() {
         deckList = mutableListOf()
