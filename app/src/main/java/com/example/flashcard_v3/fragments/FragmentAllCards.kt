@@ -59,7 +59,7 @@ class FragmentAllCards : Fragment(), CardAdapter.OnDeckClickListener {
         return binding.root
     }
 
-    // Handle the click event in this method
+
     override fun onDeckClick(deck: Deck) {
         Log.d("Fragment", "Clicked deck ID: ${deck.id}")
         sharedViewModel.setCurrentDeckIndex(deck.id)
