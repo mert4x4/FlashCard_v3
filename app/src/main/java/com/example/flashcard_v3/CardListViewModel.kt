@@ -10,6 +10,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.flashcard_v3.models.Card
 import com.example.flashcard_v3.models.Deck
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import org.xmlpull.v1.XmlPullParser
 
 
@@ -46,36 +51,38 @@ class CardListViewModel : ViewModel(), CardAdapter.OnDeckClickListener {
         setCurrentDeckIndex(0)
         setCurrentFliped(false)
 
-        val card1 = Card(id = 0, question = "What is the capital of Japan?", answer = "Tokyo")
-        val card2 = Card(id = 1, question = "What is the largest mammal on Earth?", answer = "Blue Whale")
-        val card3 = Card(id = 2, question = "Who painted the Mona Lisa?", answer = "Leonardo da Vinci")
+        val databaseReference: DatabaseReference = FirebaseDatabase.getInstance().reference.child("decks")
 
-        val deck1 = Deck(id = 0, name = "Trivia Deck", cards = listOf(card1, card2, card3))
+        databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (deckSnapshot in dataSnapshot.children) {
+                    val deckId = deckSnapshot.key?.toInt() ?: 0
+                    val deckName = deckSnapshot.child("name").getValue(String::class.java) ?: "Default Deck"
+                    val cards = mutableListOf<Card>()
 
-        val card4 = Card(id = 0, question = "What is the chemical symbol for water?", answer = "H2O")
-        val card5 = Card(id = 1, question = "Who developed the theory of relativity?", answer = "Albert Einstein")
-        val card6 = Card(id = 2, question = "What is the powerhouse of the cell?", answer = "Mitochondria")
+                    for (cardSnapshot in deckSnapshot.child("cards").children) {
+                        val cardId = cardSnapshot.child("id").getValue(Int::class.java) ?: 0
+                        val question = cardSnapshot.child("question").getValue(String::class.java) ?: ""
+                        val answer = cardSnapshot.child("answer").getValue(String::class.java) ?: ""
 
-        val deck2 = Deck(id = 1, name = "Science Deck", cards = listOf(card4, card5, card6))
+                        val card = Card(cardId, question, answer)
+                        cards.add(card)
+                    }
 
-        val card7 = Card(id = 0, question = "Red", answer = "Rot")
-        val card8 = Card(id = 1, question = "Blue", answer = "Blau")
-        val card9 = Card(id = 2, question = "Green", answer = "Grün")
-        val card10 = Card(id = 3, question = "Yellow", answer = "Gelb")
-        val card11 = Card(id = 4, question = "Purple", answer = "Lila")
-        val card12 = Card(id = 5, question = "Orange", answer = "Orange")
+                    val deck = Deck(deckId, deckName, cards)
+                    deckList.add(deck)
+                }
 
-        val deck3 = Deck(id = 2, name = "Colors Deck", cards = listOf(card7, card8, card9, card10, card11, card12))
+                _currentDeckData.value = deckList
+                _cardAdapter.value = CardAdapter(this@CardListViewModel)
+            }
 
-        deckList.add(deck1)
-        deckList.add(deck2)
-        deckList.add(deck3)
-
-        _currentDeckData.value = deckList
-
-        _cardAdapter.value = CardAdapter(this)
-
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.e("ViewModel", "Error getting decks from Firebase", databaseError.toException())
+            }
+        })
     }
+
     fun setCurrentDeckIndex(index: Int) {
         _currentDeckIndexLiveData.value = index
     }
@@ -110,7 +117,6 @@ class CardListViewModel : ViewModel(), CardAdapter.OnDeckClickListener {
     }
 
     override fun onDeckClick(deck: Deck) {
-        // Handle the click event as needed
         Log.d("ViewModel", "Clicked on deck: ${deck.name}")
     }
 
