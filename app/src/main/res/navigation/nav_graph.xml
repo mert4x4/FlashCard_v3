@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/fragment_AllCards">
+    app:startDestination="@id/fragmentLoginSignup">
     <fragment
         android:id="@+id/fragment_AllCards"
         android:name="com.example.flashcard_v3.FragmentAllCards"
@@ -20,6 +20,15 @@
         android:label="Fragment_DetailedCard" >
         <action
             android:id="@+id/action_fragment_DetailedCard_to_fragment_AllCards"
+            app:destination="@id/fragment_AllCards" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentLoginSignup"
+        android:name="com.example.flashcard_v3.FragmentLoginSignup"
+        android:label="fragment_login_signup"
+        tools:layout="@layout/fragment_login_signup" >
+        <action
+            android:id="@+id/action_fragmentLoginSignup_to_fragment_AllCards"
             app:destination="@id/fragment_AllCards" />
     </fragment>
 </navigation>
