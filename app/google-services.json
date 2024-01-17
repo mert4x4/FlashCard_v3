@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "742601346822",
+    "project_id": "flashcard-v3-edb46",
+    "storage_bucket": "flashcard-v3-edb46.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:742601346822:android:708b48f4e777474c8f9887",
+        "android_client_info": {
+          "package_name": "com.example.flashcard_v3"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHfH9SU9t6VbbItty5lN2swcokjCWv_6s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
