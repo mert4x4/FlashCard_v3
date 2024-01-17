@@ -1,4 +1,4 @@
-package com.example.flashcard_v3
+package com.example.flashcard_v3.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +9,8 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.flashcard_v3.viewModels.CardListViewModel
+import com.example.flashcard_v3.R
 
 //const val ARG_CARD = "arg_card"
 

@@ -1,4 +1,4 @@
-package com.example.flashcard_v3
+package com.example.flashcard_v3.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +10,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.navigation.findNavController
+import com.example.flashcard_v3.R
+import com.example.flashcard_v3.data.UserData
 import com.google.firebase.database.*
 
 class FragmentLoginSignup : Fragment() {
@@ -67,8 +69,6 @@ class FragmentLoginSignup : Fragment() {
             }
         }
 
-        //signup("mert4x4","mert2002")
-
         return view
     }
 
@@ -115,14 +115,12 @@ class FragmentLoginSignup : Fragment() {
                             }
                         }
                     } else {
-                        // User not found
                         Log.d("Login", "User not found")
                         Toast.makeText(requireActivity(), "User not found", Toast.LENGTH_LONG).show()
                     }
                 }
 
                 override fun onCancelled(databaseError: DatabaseError) {
-                    // Handle errors, if any
                     Log.e("Login", "Error: ${databaseError.message}")
                     Toast.makeText(requireActivity(), "Error: ${databaseError.message}", Toast.LENGTH_LONG).show()
                 }

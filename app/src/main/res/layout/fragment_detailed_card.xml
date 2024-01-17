@@ -31,6 +31,7 @@
             android:gravity="center"
             android:textSize="18sp"
             android:textStyle="bold|italic"
+            android:layout_marginRight="20dp"
             style="@style/TextAppearance.MaterialComponents.Body1"
             app:layout_constraintDimensionRatio="H,358:454"
             app:layout_constraintEnd_toEndOf="parent"

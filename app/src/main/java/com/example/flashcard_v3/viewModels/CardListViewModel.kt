@@ -1,13 +1,10 @@
-package com.example.flashcard_v3
+package com.example.flashcard_v3.viewModels
 
-import android.content.Context
-import android.graphics.Color
 import android.util.Log
-import android.widget.TextView
-import androidx.databinding.BindingAdapter
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.flashcard_v3.adapters.CardAdapter
 import com.example.flashcard_v3.models.Card
 import com.example.flashcard_v3.models.Deck
 import com.google.firebase.database.DataSnapshot
@@ -15,7 +12,6 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import org.xmlpull.v1.XmlPullParser
 
 
 class CardListViewModel : ViewModel(), CardAdapter.OnDeckClickListener {

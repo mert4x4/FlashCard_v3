@@ -1,4 +1,4 @@
-package com.example.flashcard_v3
+package com.example.flashcard_v3.data
 
 data class UserData(
     val id: String? = null,

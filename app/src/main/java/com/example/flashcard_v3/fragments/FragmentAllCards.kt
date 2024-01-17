@@ -1,4 +1,4 @@
-package com.example.flashcard_v3
+package com.example.flashcard_v3.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +12,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.flashcard_v3.viewModels.CardListViewModel
+import com.example.flashcard_v3.R
+import com.example.flashcard_v3.adapters.CardAdapter
 import com.example.flashcard_v3.models.Deck
 import com.example.flashcard_v3.databinding.FragmentAllCardsBinding
 

@@ -6,7 +6,7 @@
     app:startDestination="@id/fragmentLoginSignup">
     <fragment
         android:id="@+id/fragment_AllCards"
-        android:name="com.example.flashcard_v3.FragmentAllCards"
+        android:name="com.example.flashcard_v3.fragments.FragmentAllCards"
         android:label="fragment__all_cards"
         tools:layout="@layout/fragment_all_cards" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_DetailedCard"
-        android:name="com.example.flashcard_v3.FragmentDetailedCard"
+        android:name="com.example.flashcard_v3.fragments.FragmentDetailedCard"
         android:label="Fragment_DetailedCard" >
         <action
             android:id="@+id/action_fragment_DetailedCard_to_fragment_AllCards"
@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentLoginSignup"
-        android:name="com.example.flashcard_v3.FragmentLoginSignup"
+        android:name="com.example.flashcard_v3.fragments.FragmentLoginSignup"
         android:label="fragment_login_signup"
         tools:layout="@layout/fragment_login_signup" >
         <action

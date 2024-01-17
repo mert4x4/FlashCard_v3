@@ -1,14 +1,11 @@
-package com.example.flashcard_v3
+package com.example.flashcard_v3.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.flashcard_v3.models.Deck
 import com.example.flashcard_v3.databinding.AllCardsItemBinding
-import com.example.flashcard_v3.models.Card
-import org.xmlpull.v1.XmlPullParser
 
 
 class CardAdapter(private val clickListener: OnDeckClickListener) :
